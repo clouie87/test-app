@@ -14,6 +14,9 @@ $assertive:                       #ef473a !default;
 $royal:                           #886aea !default;
 $dark:                            #444 !default;
 */
+body {
+  background-color: yellow !important; }
+
 .pane {
   background-image: url("styles/amanda2.jpg");
   background-repeat: no-repeat;
@@ -21,6 +24,9 @@ $dark:                            #444 !default;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   background-size: cover; }
+
+.dash-pane {
+  background-color: green; }
 
 .button-block {
   width: 100%;

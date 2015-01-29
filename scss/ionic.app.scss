@@ -18,6 +18,10 @@ $dark:                            #444 !default;
 //$stable: #886aea;
 ///$postitive: #853385;
 
+body{
+  background-color: yellow !important;
+}
+
 .pane{
   background-image: url("styles/amanda2.jpg");
   background-repeat: no-repeat;
@@ -25,6 +29,10 @@ $dark:                            #444 !default;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   background-size: cover;
+}
+
+.dash-pane{
+  background-color: green;
 }
 
 .button-block{

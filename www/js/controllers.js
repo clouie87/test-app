@@ -1,11 +1,24 @@
 angular.module('starter.controllers', [])
 
+    .controller('SignInCtrl', function($scope, $state){
+      $scope.signIn = function(user){
+        console.log('SignIn', user);
+        $state.go('tab.dash');
+      };
+    })
 
-.controller('LoginCtrl', function($scope) {
+    .controller('LoginCtrl', function($scope, LoginService, $ionicPopup, $state) {
       $scope.data = {};
 
-      $scope.login = function(){
-        console.log("LOGIN user: " + $scope.data.username + " - PW: " + $scope.data.password);
+      $scope.login = function() {
+        LoginService.loginUser($scope.data.username, $scope.data.password).success(function(data) {
+          $state.go('tab.dash');
+        }).error(function(data) {
+          var alertPopup = $ionicPopup.alert({
+            title: 'Login failed!',
+            template: 'Please check your credentials!'
+          });
+        });
       }
     })
 
