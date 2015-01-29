@@ -40,7 +40,7 @@ span {
   color: white; }
 
 .text-color {
-  color: white; }
+  color: white !important; }
 
 /*!
   Ionicons, v1.5.2
