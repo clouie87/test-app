@@ -15,32 +15,39 @@ $royal:                           #886aea !default;
 $dark:                            #444 !default;
 */
 body {
-  background-color: yellow !important; }
+  color: #ffffff !important; }
 
 .pane {
-  background-image: url("styles/amanda2.jpg");
+  background-image: url("styles/starscopy2.jpg");
   background-repeat: no-repeat;
   position: center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   background-size: cover; }
 
-.dash-pane {
-  background-color: green; }
-
 .button-block {
   width: 100%;
   display: block; }
 
+h2 {
+  color: white !important; }
+
+.title {
+  margin-left: 42%; }
+
 .buffer-top {
-  height: 100px; }
+  height: 50px; }
 
 label.no-border {
   border: none; }
 
 label.item-input {
-  background-color: rgba(211, 211, 211, 0.5);
-  color: white; }
+  background-color: rgba(28, 61, 113, 0.65);
+  -webkit-box-shadow: 1px 1px 1px 1px rgba(211, 211, 211, 0.5);
+  color: white !important; }
+
+input {
+  color: #ffffff !important; }
 
 span {
   color: white; }
