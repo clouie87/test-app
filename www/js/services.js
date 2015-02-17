@@ -30,29 +30,29 @@ angular.module('starter.services', [])
   // Some fake testing data
   var chats = [{
     id: 0,
-    name: 'Ben Sparrow',
-    lastText: 'You on your way?',
-    face: 'https://pbs.twimg.com/profile_images/514549811765211136/9SgAuHeY.png'
+    name: 'Brian Best',
+    lastText: 'Get the CBTransit App!',
+    face: 'https://media.licdn.com/mpr/mpr/shrink_500_500/p/1/005/04e/006/2986ad0.jpg'
   }, {
     id: 1,
-    name: 'Max Lynx',
-    lastText: 'Hey, it\'s me',
-    face: 'https://avatars3.githubusercontent.com/u/11214?v=3&s=460'
+    name: 'Matt Johnston',
+    lastText: 'Carol, Lay.rs can be used for more than just penguin pictures!',
+    face: 'http://static.giantbomb.com/uploads/scale_medium/0/3683/1120634-penguin_chick.jpg'
   }, {
     id: 2,
-    name: 'Andrew Jostlin',
+    name: 'AJ Fraser',
     lastText: 'Did you get the ice cream?',
-    face: 'https://pbs.twimg.com/profile_images/491274378181488640/Tti0fFVJ.jpeg'
+    face: 'https://lh5.googleusercontent.com/-Y66BM4Bn1kU/AAAAAAAAAAI/AAAAAAAAAbE/BZ2kFPK9NR4/photo.jpg'
   }, {
     id: 3,
-    name: 'Adam Bradleyson',
-    lastText: 'I should buy a boat',
-    face: 'https://pbs.twimg.com/profile_images/479090794058379264/84TKj_qa.jpeg'
+    name: 'Darian MacDonald',
+    lastText: 'Let me buy you coffee!!',
+    face: 'http://i.forbesimg.com/media/lists/people/taylor-swift_416x416.jpg'
   }, {
     id: 4,
-    name: 'Perry Governor',
-    lastText: 'Look at my mukluks!',
-    face: 'https://pbs.twimg.com/profile_images/491995398135767040/ie2Z_V6e.jpeg'
+    name: 'Colin McInnis',
+    lastText: 'Otters are the bomb!!',
+    face: 'https://media.licdn.com/mpr/mpr/shrink_500_500/p/2/005/09a/3af/2a5067c.jpg'
   }];
 
   return {
@@ -83,30 +83,32 @@ angular.module('starter.services', [])
   // Some fake testing data
   var friends = [{
     id: 0,
-    name: 'Ben Sparrow',
+    name: 'Darian McDonald',
     notes: 'Enjoys drawing things',
-    face: 'https://pbs.twimg.com/profile_images/514549811765211136/9SgAuHeY.png'
+    face: 'http://i.forbesimg.com/media/lists/people/taylor-swift_416x416.jpg'
   }, {
     id: 1,
-    name: 'Max Lynx',
-    notes: 'Odd obsession with everything',
-    face: 'https://avatars3.githubusercontent.com/u/11214?v=3&s=460'
-  }, {
-    id: 2,
-    name: 'Andrew Jostlen',
-    notes: 'Wears a sweet leather Jacket. I\'m a bit jealous',
-    face: 'https://pbs.twimg.com/profile_images/491274378181488640/Tti0fFVJ.jpeg'
-  }, {
-    id: 3,
-    name: 'Adam Bradleyson',
-    notes: 'I think he needs to buy a boat',
-    face: 'https://pbs.twimg.com/profile_images/479090794058379264/84TKj_qa.jpeg'
-  }, {
-    id: 4,
-    name: 'Perry Governor',
-    notes: 'Just the nicest guy',
-    face: 'https://pbs.twimg.com/profile_images/491995398135767040/ie2Z_V6e.jpeg'
-  }];
+    name: 'Matt Johnston',
+    notes: 'Founder of Lay.rs',
+    face: 'http://static.giantbomb.com/uploads/scale_medium/0/3683/1120634-penguin_chick.jpg'
+  },
+    //{
+  //  id: 2,
+  //  name: 'Andrew Jostlen',
+  //  notes: 'Wears a sweet leather Jacket. I\'m a bit jealous',
+  //  face: 'https://pbs.twimg.com/profile_images/491274378181488640/Tti0fFVJ.jpeg'
+  //}, {
+  //  id: 3,
+  //  name: 'Adam Bradleyson',
+  //  notes: 'I think he needs to buy a boat',
+  //  face: 'https://pbs.twimg.com/profile_images/479090794058379264/84TKj_qa.jpeg'
+  //}, {
+  //  id: 4,
+  //  name: 'Perry Governor',
+  //  notes: 'Just the nicest guy',
+  //  face: 'https://pbs.twimg.com/profile_images/491995398135767040/ie2Z_V6e.jpeg'
+  //}
+  ];
 
 
   return {

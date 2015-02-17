@@ -4,7 +4,7 @@
         <div class="buffer-top">
 
         </div>
-
+        <div class="buffer-top"></div>
         <div>
             <div class="buffer-left"></div>
             <div><h2 class="title">ePic</h2></div>
@@ -12,25 +12,31 @@
         </div>
 
 
-        <div class="buffer-top">
+        <div class="buffer-top"></div>
 
-        </div>
-        <div class="list padding top">
-            <label class="item item-input">
-                <input class="text-color" type="text" placeholder="Email" ng-model="data.username">
-            </label>
-            </br>
-            <label class="item item-input">
-                <input type="text" placeholder="Password" ng-model="data.password">
-            </label>
+        <!--</div>-->
+        <!--<div class="list padding top">-->
+            <!--<label class="item item-input">-->
+                <!--<input class="text-color" type="text" placeholder="Email" ng-model="data.username">-->
+            <!--</label>-->
+            <!--</br>-->
+            <!--<label class="item item-input">-->
+                <!--<input type="text" placeholder="Password" ng-model="data.password">-->
+            <!--</label>-->
 
-        </div>
+        <!--</div>-->
 
-        <button class="button button-block button-energized" ng-click="signIn(user)">
-            Signup!
-        </button>
+        <!--<button class="button button-block button-energized" ng-click="signIn(user)">-->
+            <!--Signup!-->
+        <!--</button>-->
 
         <div class="row">
+
+            <div class= "col">
+                <button  class="button button-assertive button-block" ng-click="signIn(user)">
+                    Local
+                </button>
+            </div>
 
             <div class= "col">
                 <button class="button button-positive button-block">
@@ -40,44 +46,42 @@
 
 
             <div class= "col">
-                <button class="button button-assertive button-block">
-                    Google+
+                <button ng-click="Instagram" class="button button-energized button-block">
+                    Instagram
                 </button>
             </div>
 
 
-            <div class= "col">
-                <button class="button button-calm button-block">
-                    Twitter
-                </button>
-            </div>
+            <!--<div class= "col">-->
+                <!--<button class="button button-calm button-block">-->
+                    <!--Twitter-->
+                <!--</button>-->
+            <!--</div>-->
         </div>
+
+        <!--<div class="container">-->
+
+            <!--<div class="jumbotron text-center">-->
+                <!--<h1></h1>-->
+
+                <!--<p>Login or Register with:</p>-->
+                <!--<div class="row">-->
+                <!--<div class="col">-->
+                    <!--<button class="button button-stable button-block">-->
+                        <!--Facebook-->
+                    <!--</button>-->
+                    <!--<!--<a href="/login" class="button button-calm button-block"><span class="fa fa-user"></span> Login</a>-->
+                <!--</div>-->
+                <!--<div class="col">-->
+                    <!--<a href="/signup" class="button button-calm button-block"><span class="fa fa-user"></span> Signup</a>-->
+                <!--</div>-->
+                <!--<div class="col">-->
+                    <!--<a href="/auth/instagram" class="button button-calm button-block"><span class="fa fa-instagram"></span> Instagram</a>-->
+                <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+
+        <!--</div>-->
     </ion-content>
 </ion-view>
 
-<!--    <div class="list card">-->
-<!--      -->
-<!--      <div class="item item-divider">Recent Updates</div>-->
-<!--      -->
-<!--      <div class="item item-body">-->
-<!--        <div>-->
-<!--          There is a fire in <b>sector 3</b>-->
-<!--        </div>-->
-<!--      </div>-->
-<!--    </div>-->
-<!--    <div class="list card">-->
-<!--      <div class="item item-divider">Health</div>-->
-<!--      <div class="item item-body">-->
-<!--        <div>-->
-<!--          You ate an apple today!-->
-<!--        </div>-->
-<!--      </div>-->
-<!--    </div>-->
-<!--    <div class="list card">-->
-<!--      <div class="item item-divider">Upcoming</div>-->
-<!--      <div class="item item-body">-->
-<!--        <div>-->
-<!--          You have <b>29</b> meetings on your calendar tomorrow.-->
-<!--        </div>-->
-<!--      </div>-->
-<!--    </div>-->

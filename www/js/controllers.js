@@ -7,6 +7,20 @@ angular.module('starter.controllers', [])
       };
     })
 
+    .controller('InstagramCtrl', function($scope, $state){
+      $scope.signIn = function(user){
+        console.log('Instagram Signin', user);
+        $state.go('/auth/instagram');
+      };
+    })
+
+    .controller('FacebookCtrl', function($scope, $state){
+      $scope.signIn = function(user){
+        console.log('Facebook Signin', user);
+        $state.go('/auth/facebook');
+      };
+    })
+
     .controller('LoginCtrl', function($scope, LoginService, $ionicPopup, $state) {
       $scope.data = {};
 

@@ -15,10 +15,13 @@ $royal:                           #886aea !default;
 $dark:                            #444 !default;
 */
 body {
-  color: #ffffff !important; }
+  background-color: grey !important; }
+
+.dash-pane {
+  background: black !important; }
 
 .pane {
-  background-image: url("styles/starscopy2.jpg");
+  background: url("styles/darksky2.jpg");
   background-repeat: no-repeat;
   position: center center fixed;
   -webkit-background-size: cover;
@@ -38,6 +41,10 @@ h2 {
 .buffer-top {
   height: 50px; }
 
+.item.item-divider {
+  background: url("styles/darksky2.jpg");
+  color: white !important; }
+
 label.no-border {
   border: none; }
 
@@ -51,6 +58,11 @@ input {
 
 span {
   color: white; }
+
+img {
+  height: 300px;
+  width: 300px;
+  position: center center fixed; }
 
 .text-color {
   color: white !important; }
