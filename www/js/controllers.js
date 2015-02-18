@@ -1,3 +1,4 @@
+
 angular.module('starter.controllers', [])
 
     .controller('SignInCtrl', function($scope, $state){
@@ -7,12 +8,12 @@ angular.module('starter.controllers', [])
       };
     })
 
-    .controller('InstagramCtrl', function($scope, $state){
-      $scope.signIn = function(user){
-        console.log('Instagram Signin', user);
-        $state.go('/auth/instagram');
-      };
-    })
+    //.controller('InstagramCtrl', function($scope, $state){
+    //  $scope.instaSignIn = function(user){
+    //    console.log('Instagram Signin', user);
+    //    $state.go('http://clouie.ca/auth/instagram');
+    //  };
+    //})
 
     .controller('FacebookCtrl', function($scope, $state){
       $scope.signIn = function(user){
@@ -36,8 +37,46 @@ angular.module('starter.controllers', [])
       }
     })
 
-.controller('DashCtrl', function($scope) {})
 
+
+.controller('DashCtrl', function($scope) {
+      //$http.get('http://clouie.ca/uploads/dsc_0682-copy_1424265305474.jpg')
+    })
+
+.controller('MainCtrl', ['$scope', '$route', 'Post',
+        function($scope, $route, Post){
+          $scope.post = new Post();
+          $scope.posts = Post.query();
+
+          $scope.newPost= function(){
+            $scope.post = new Post();
+            $scope.editing = false;
+          }
+
+          $scope.activePost= function(post){
+            $scope.post=post;
+            $scope.editing=true;
+          }
+
+          $scope.save = function() {
+            if ($scope.post._id) {
+              Post.update({_id: $scope.post_id}, $scope.post);
+            } else {
+              $scope.post.$save().then(function (response) {
+                $scope.posts.push(response)
+              });
+            }
+            $scope.editing = false;
+            $scope.posts = new Post();
+          }
+
+          $scope.delete = function(post) {
+            Post.delete(post)
+            _.remove($scope.posts, post)
+          }
+        }
+
+    ])
 
 .controller('ChatsCtrl', function($scope, Chats) {
   $scope.chats = Chats.all();
@@ -54,8 +93,15 @@ angular.module('starter.controllers', [])
   $scope.friends = Friends.all();
 })
 
+
+
 .controller('FriendDetailCtrl', function($scope, $stateParams, Friends) {
   $scope.friend = Friends.get($stateParams.friendId);
+})
+
+.controller('PhotosCtrl', function($scope, $stateParams, Photos) {
+  $scope.photos = Photos.all();
+  $scope.photo = Photos.get($stateParams.photoId)
 })
 
 .controller('AccountCtrl', function($scope) {
@@ -63,3 +109,14 @@ angular.module('starter.controllers', [])
     enableFriends: true
   };
 });
+
+//(function() {
+//  var app = angular.module('user', ['user-photos']);
+//  app.controller('userController', ['http', function($http){
+//    var user = this;
+//    user.photos=[];
+//    $http.get('http://clouie.ca/uploads/').success(function(data){
+//      user.photos=data;
+//    });
+//  }]);
+//})();

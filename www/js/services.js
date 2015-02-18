@@ -23,6 +23,25 @@ angular.module('starter.services', [])
       }
     })
 
+//.provider('Post', function() {
+//      this.$get = ['$resource', function($resource) {
+//        postmethods = $resource('http://localhost:8100/api/post/:_id', {}, {
+//          update: {
+//            method: 'PUT'
+//          }
+//        })
+//
+//        function Post(attributes) {
+//          this.$save = new postmethods().$save()
+//        }
+//
+//        Post.query = postmethods.query;
+//
+//
+//        return Post;
+//      }]
+//    })
+
 
 .factory('Chats', function() {
   // Might use a resource here that returns a JSON array
@@ -120,4 +139,25 @@ angular.module('starter.services', [])
       return friends[friendId];
     }
   }
-});
+})
+
+.factory('Photos', function(){
+      var photos = [{
+        //this would be the array that we get from our api with the filepath, description and album
+        //this is dummy text for right now but what our database would return
+        id: 1,
+        album_id: 'Darian McDonald',
+        description: 'Enjoys drawing things',
+        filepath: 'http://clouie.ca/uploads/dsc_0682-copy_1424265305474.jpg'
+      }];
+
+      return {
+        all: function() {
+          return photos;
+        },
+        get: function(photoId) {
+          // Simple index lookup
+          return photos[photoId];
+        }
+      }
+    })

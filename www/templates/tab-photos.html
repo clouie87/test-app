@@ -1,9 +1,9 @@
-<ion-view view-title="Account">
+<ion-view view-title="Photos">
   <ion-content>
     <ion-list>
-      <ion-item class="item-avatar" ng-repeat="photo in photos" type="item-text-wrap" href="#/tab/account/{{photo.id}}">
+      <ion-item class="item-avatar" ng-repeat="photo in photos" type="item-text-wrap" href="#/tab/photos/{{photo.id}}">
         <img ng-src="{{photo.filepath}}">
-        <h2>{{photo.description}}</h2>
+        <p>{{photo.description}}</p>
       </ion-item>
     </ion-list>
     <!--<ion-list>-->
@@ -17,14 +17,5 @@
         <!--</label>-->
       <!--</ion-item>-->
     <!--</ion-list>-->
-
-    <!--.controller('PhotosCtrl', ['$http', function($http) {-->
-    <!--var starter = this;-->
-    <!--starter.photos = [];-->
-    <!--$http.get('http://clouie.ca/uploads/').success(function (data) {-->
-    <!--starter.photos = data-->
-    <!--});-->
-    <!--}])()-->
-
   </ion-content>
 </ion-view>
