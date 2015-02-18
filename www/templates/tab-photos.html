@@ -1,11 +1,22 @@
 <ion-view view-title="Photos">
   <ion-content>
-    <ion-list>
-      <ion-item class="item-avatar" ng-repeat="photo in photos" type="item-text-wrap" href="#/tab/photos/{{photo.id}}">
-        <img ng-src="{{photo.filepath}}">
+    <div class="list card">
+      <ion-item class="item item-body" ng-repeat="photo in photos" type="item-text-wrap" href="#/tab/photos/{{photo.id}}">
+        <div>
+
+         <h3>{{photo.album_id}}</h3></br>
+        </div>
+        <!--<div class="left-buffer"></div>-->
+        <div>
+          <img ng-src="http://clouie.ca/{{photo.filepath}}"/>
+        </div>
         <p>{{photo.description}}</p>
       </ion-item>
-    </ion-list>
+      <!--<div class="card-buffer"></div>-->
+
+    </div>
+
+    <!--</ion-list>-->
     <!--<ion-list>-->
       <!--<ion-item class="item-toggle">-->
         <!--Enable Friends-->

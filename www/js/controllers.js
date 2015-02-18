@@ -99,10 +99,15 @@ angular.module('starter.controllers', [])
   $scope.friend = Friends.get($stateParams.friendId);
 })
 
-.controller('PhotosCtrl', function($scope, $stateParams, Photos) {
-  $scope.photos = Photos.all();
-  $scope.photo = Photos.get($stateParams.photoId)
-})
+.controller('PhotosCtrl', ['$scope', '$http', function($scope, $http){
+      $scope.photos=[];
+      $http.get('http://clouie.ca/photo/').success(function(data){
+        //$window.photos = data;
+        $scope.photos = data;
+        //console.log(data.field('description', data.validPhotoResource.description))
+      });
+  }])
+
 
 .controller('AccountCtrl', function($scope) {
   $scope.settings = {
@@ -110,13 +115,3 @@ angular.module('starter.controllers', [])
   };
 });
 
-//(function() {
-//  var app = angular.module('user', ['user-photos']);
-//  app.controller('userController', ['http', function($http){
-//    var user = this;
-//    user.photos=[];
-//    $http.get('http://clouie.ca/uploads/').success(function(data){
-//      user.photos=data;
-//    });
-//  }]);
-//})();

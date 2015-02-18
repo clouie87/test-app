@@ -28,6 +28,10 @@ body {
   -moz-background-size: cover;
   background-size: cover; }
 
+.card-buffer {
+  height: 50px;
+  background-color: black !important; }
+
 .button-block {
   width: 100%;
   display: block; }

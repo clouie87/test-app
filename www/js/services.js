@@ -141,23 +141,31 @@ angular.module('starter.services', [])
   }
 })
 
-.factory('Photos', function(){
-      var photos = [{
-        //this would be the array that we get from our api with the filepath, description and album
-        //this is dummy text for right now but what our database would return
-        id: 1,
-        album_id: 'Darian McDonald',
-        description: 'Enjoys drawing things',
-        filepath: 'http://clouie.ca/uploads/dsc_0682-copy_1424265305474.jpg'
-      }];
+.factory('Photos', function() {
 
-      return {
-        all: function() {
-          return photos;
-        },
-        get: function(photoId) {
-          // Simple index lookup
-          return photos[photoId];
-        }
-      }
-    })
+
+      //var photos = [];
+      //var photos = [{
+      //  //this would be the array that we get from our api with the filepath, description and album
+      //  //this is dummy text for right now but what our database would return
+      //  id: 1,
+      //  album_id: 'Darian McDonald',
+      //  description: 'Enjoys drawing things',
+      //  filepath: 'http://clouie.ca/uploads/dsc_0682-copy_1424265305474.jpg'
+      //}, {
+      //  id: 1,
+      //  album_id: 'Darian McDonald',
+      //  description: 'Enjoys drawing things',
+      //  filepath: 'http://clouie.ca/uploads/dsc_0682-copy_1424265305474.jpg'
+      //}];
+      //
+      //return {
+      //  all: function() {
+      //    return photos;
+      //  },
+      //  get: function(photoId) {
+      //    // Simple index lookup
+      //    return photos[photoId];
+      //  }
+      //}
+    });
