@@ -46,10 +46,10 @@ body{
   display: block;
 }
 
-h2{
-  color: white !important;
-
-}
+//h2{
+//  color: white !important;
+//
+//}
 .title{
   margin-left: 42%;
 }
@@ -77,13 +77,13 @@ label.item-input{
 input{
   color: #ffffff !important;
 }
-span{
-  color: white;
-}
+//span{
+//  color: white;
+//}
 
 img{
-  height: 300px;
-  width: 300px;
+  max-height: 300px;
+  //width: 300px;
   position: center center fixed;
 }
 .text-color {
