@@ -142,8 +142,18 @@ angular.module('starter.services', [])
 })
 
 .factory('Photos', function() {
+        var photos = [];
 
-
+        return {
+            all: function() {
+                return photos;
+            },
+            get: function(photoId) {
+                // Simple index lookup
+                return photos[photoId];
+            }
+        };
+    //})
       //var photos = [];
       //var photos = [{
       //  //this would be the array that we get from our api with the filepath, description and album

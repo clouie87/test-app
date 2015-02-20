@@ -1,20 +1,117 @@
 <ion-view view-title="Photos">
   <ion-content>
-    <div class="list card">
-      <ion-item class="item item-body" ng-repeat="photo in photos" type="item-text-wrap" href="#/tab/photos/{{photo.id}}">
-        <div>
+    <div class="container">
 
-         <h3>{{photo.album_id}}</h3></br>
-        </div>
-        <!--<div class="left-buffer"></div>-->
-        <div>
-          <img ng-src="http://clouie.ca/{{photo.filepath}}"/>
-        </div>
-        <p>{{photo.description}}</p>
-      </ion-item>
-      <!--<div class="card-buffer"></div>-->
+    <div class="list card">
+
+      <div class="item item-divider"></br>
+        This Could Be Your Next Collage:
+        <br></br>
+      </div>
+
+      <ion-slide-box on-slide-changed="slideHasChanged($index)">
+        <ion-slide>
+          <div class="box blue">
+            <div class="item item-body">
+              <div class="left-buffer"></div>
+              <div class="row">
+                <img ng-src="http://clouie.ca/uploads/four_1424265083572.jpg"/>
+                <p style="color:transparent">alskd</p>
+                <div>
+                  <div style="height: 146px"></div>
+                  <i class="icon ion-chevron-right"></i>
+                </div>
+              </div>
+            </div>
+            <div style="height: 60px"></div>
+          </div>
+        </ion-slide>
+
+        <ion-slide>
+          <div class="box yellow">
+            <div class="item item-body">
+              <div class="left-buffer"></div>
+              <div class="row">
+                <img ng-src="http://clouie.ca/uploads/faye-copy_1424313676094.jpg"/>
+                <p style="color:transparent">alskd</p>
+                <div>
+                  <div style="height: 146px"></div>
+                  <i class="icon ion-chevron-right"></i>
+                </div>
+              </div>
+            </div>
+            <div style="height: 60px"></div>
+          </div>
+        </ion-slide>
+
+        <ion-slide>
+          <div class="box pink"><h1>PINK</h1></div>
+        </ion-slide>
+
+      </ion-slide-box>
+
+      <button class="button button-full button-energized">Save this Collage</button>
+      <br>
 
     </div>
+
+    <div class="row">
+      <div class="col"></div>
+      <button class="button button-block button-calm">
+        <ion-item class= "item-light" type="item-text-wrap" href="#/tab/photo/create">
+          <div>
+              <h2 class="balanced">OR CREATE YOUR OWN!</h2>
+          </div>
+        </ion-item>
+      </button>
+      <div class="col"></div>
+    </div>
+
+
+    <!--<div class="list card" ng-repeat="photo in photos" type="item-text-wrap" href="#/tab/photo/{{photo.id}}">-->
+
+      <!--<div class="item item-avatar">-->
+        <!--<!--<img src="avatar.jpg">-->
+        <!--<h2>{{photo.username}}</h2>-->
+        <!--<p></p>-->
+      <!--</div>-->
+
+      <!--<div class="item item-image">-->
+        <!--<img ng-src="http://clouie.ca/{{photo.filepath}}"/>-->
+      <!--</div>-->
+
+      <!--<div class="item item-divider">-->
+        <!--<!--<img src="avatar.jpg">-->
+        <!--<h2>{{photo.description}}</h2>-->
+        <!--<p></p>-->
+      <!--</div>-->
+
+      <!--<div>-->
+        <!--<p>{{photo.description}}</p>-->
+      <!--</div>-->
+
+
+
+
+    </div>
+
+    <!--<div class="card">-->
+      <!--<div class="item item-body" ng-repeat="photo in photos" type="item-text-wrap" href="#/tab/photos/{{photo.id}}">-->
+      <!--<div>-->
+         <!--<h3>{{photo.album_id}}</h3></br>-->
+        <!--</div>-->
+        <!--<!--<div class="left-buffer"></div>-->
+        <!--<div>-->
+          <!--<img ng-src="http://clouie.ca/{{photo.filepath}}"/>-->
+        <!--</div>-->
+        <!--<p>{{photo.description}}</p>-->
+      <!--</div>-->
+
+      <!--<div class="item item-divider">-->
+        <!--I'm a Footer in a Card!-->
+      <!--</div>-->
+
+    <!--</div>-->
 
     <!--</ion-list>-->
     <!--<ion-list>-->

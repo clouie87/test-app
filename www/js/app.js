@@ -53,6 +53,8 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     }
   })
 
+
+
   .state('tab.chats', {
       url: '/chats',
       views: {
@@ -97,6 +99,16 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
         'tab-photos': {
           templateUrl: 'templates/tab-photos.html',
           controller: 'PhotosCtrl'
+        }
+      }
+    })
+
+    .state('tab.photo-create', {
+      url: '/photo/create',
+      views: {
+        'tab-photos': {
+          templateUrl: 'templates/photo-create.html',
+          controller: 'NewPhotoCtrl'
         }
       }
     })

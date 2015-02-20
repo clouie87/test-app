@@ -37,46 +37,28 @@ angular.module('starter.controllers', [])
       }
     })
 
+//.controller ('EditCtrl', function($scope, $ionicSideMenuDelegate) {
+//    $scope.toggleRight = function() {
+//        $ionicSideMenuDelegate.toggleRight();
+//    };
+//})
+
+.controller('NewPhotoCtrl', function($scope, $ionicModal) {
+
+        // Load the modal from the given template URL
+        $ionicModal.fromTemplateUrl('add-photos.html', {
+            scope: $scope,
+            animation: 'slide-in-up'
+        }).then(function (modal) {
+            $scope.modal = modal;
+
+        })
+    })
 
 
 .controller('DashCtrl', function($scope) {
       //$http.get('http://clouie.ca/uploads/dsc_0682-copy_1424265305474.jpg')
     })
-
-.controller('MainCtrl', ['$scope', '$route', 'Post',
-        function($scope, $route, Post){
-          $scope.post = new Post();
-          $scope.posts = Post.query();
-
-          $scope.newPost= function(){
-            $scope.post = new Post();
-            $scope.editing = false;
-          }
-
-          $scope.activePost= function(post){
-            $scope.post=post;
-            $scope.editing=true;
-          }
-
-          $scope.save = function() {
-            if ($scope.post._id) {
-              Post.update({_id: $scope.post_id}, $scope.post);
-            } else {
-              $scope.post.$save().then(function (response) {
-                $scope.posts.push(response)
-              });
-            }
-            $scope.editing = false;
-            $scope.posts = new Post();
-          }
-
-          $scope.delete = function(post) {
-            Post.delete(post)
-            _.remove($scope.posts, post)
-          }
-        }
-
-    ])
 
 .controller('ChatsCtrl', function($scope, Chats) {
   $scope.chats = Chats.all();
@@ -100,13 +82,18 @@ angular.module('starter.controllers', [])
 })
 
 .controller('PhotosCtrl', ['$scope', '$http', function($scope, $http){
-      $scope.photos=[];
+      $scope.photos= [];
       $http.get('http://clouie.ca/photo/').success(function(data){
         //$window.photos = data;
         $scope.photos = data;
         //console.log(data.field('description', data.validPhotoResource.description))
       });
+
   }])
+
+.controller('PhotoCreateCtrl', function($scope, $stateParams, Photos) {
+    $scope.photo = Photos.get($stateParams.photoId);
+})
 
 
 .controller('AccountCtrl', function($scope) {
