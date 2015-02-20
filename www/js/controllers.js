@@ -81,19 +81,44 @@ angular.module('starter.controllers', [])
   $scope.friend = Friends.get($stateParams.friendId);
 })
 
-.controller('PhotosCtrl', ['$scope', '$http', function($scope, $http){
+.controller('PhotosCtrl', ['$scope', '$http', function($scope, $http, Photos){
+
       $scope.photos= [];
       $http.get('http://clouie.ca/photo/').success(function(data){
         //$window.photos = data;
         $scope.photos = data;
+
         //console.log(data.field('description', data.validPhotoResource.description))
       });
-
   }])
+
+.controller('AddPhotosCtrl', ['$scope', '$http', function($scope, $http){
+    $scope.photos= [];
+    $http.get('http://clouie.ca/photo/').success(function(data){
+        //$window.photos = data;
+        $scope.photos = data;
+        //console.log(data.field('description', data.validPhotoResource.description))
+    });
+
+
+}])
+
 
 .controller('PhotoCreateCtrl', function($scope, $stateParams, Photos) {
     $scope.photo = Photos.get($stateParams.photoId);
 })
+
+
+.controller('PhotoDetailCtrl', ['$scope', '$http', 'Photos', function($scope, $http, $stateParams, Photos){
+        $scope.photos= [];
+        $http.get('http://clouie.ca/photo/').success(function(data){
+            //$window.photos = data;
+            $scope.photos = data;
+            //console.log(data.field('description', data.validPhotoResource.description))
+        });
+        $scope.photo = Photos.get($stateParams.photoDescription);
+
+}])
 
 
 .controller('AccountCtrl', function($scope) {

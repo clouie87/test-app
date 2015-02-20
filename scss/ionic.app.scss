@@ -28,6 +28,12 @@ $balanced: #fff !default;
   margin-left: 5%;
   border: none;
 }
+
+.item-complex .item-content, .item-radio .item-content {
+  padding: 3px !important;
+  margin: 5px !important;
+//  margin-top: 5px !important;
+}
 //.button-block-create{
 //  margin-left: 5% !important;
 //  width: 90%;
@@ -45,6 +51,7 @@ body{
   float: right;
   margin-top: 10%;
 }
+
 
 .left{
   float:left;
@@ -114,6 +121,12 @@ img{
   //width: 300px;
   position: center center fixed;
 }
+
+img.thumbnail{
+  width: 100px;
+  height: 100px;
+}
+
 .text-color {
   color: white !important;
   //text-shadow: -2px 0 grey, 0 2px grey, 2px 0 grey, 0 -2px grey;

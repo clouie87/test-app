@@ -148,9 +148,9 @@ angular.module('starter.services', [])
             all: function() {
                 return photos;
             },
-            get: function(photoId) {
+            get: function(photoDescription) {
                 // Simple index lookup
-                return photos[photoId];
+                return photos[photoDescription];
             }
         };
     //})

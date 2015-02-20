@@ -103,12 +103,33 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
       }
     })
 
+    .state('tab.add-photos', {
+      url: '/add/photo',
+      views: {
+        'tab-photos': {
+          templateUrl: 'templates/add-photos.html',
+          controller: 'AddPhotosCtrl'
+        }
+      }
+    })
+
+
     .state('tab.photo-create', {
       url: '/photo/create',
       views: {
         'tab-photos': {
           templateUrl: 'templates/photo-create.html',
-          controller: 'NewPhotoCtrl'
+          controller: 'PhotoCreateCtrl'
+        }
+      }
+    })
+
+    .state('tab.photo-detail', {
+      url: '/photo/:photoId',
+      views: {
+        'tab-photos': {
+          templateUrl: 'templates/photo-detail.html',
+          controller: 'PhotoDetailCtrl'
         }
       }
     })

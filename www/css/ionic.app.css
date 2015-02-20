@@ -18,6 +18,10 @@ $dark:                            #444 !default;
   margin-left: 5%;
   border: none; }
 
+.item-complex .item-content, .item-radio .item-content {
+  padding: 3px !important;
+  margin: 5px !important; }
+
 body {
   background-color: grey !important; }
 
@@ -73,6 +77,10 @@ input {
 img {
   max-height: 300px;
   position: center center fixed; }
+
+img.thumbnail {
+  width: 100px;
+  height: 100px; }
 
 .text-color {
   color: white !important; }
