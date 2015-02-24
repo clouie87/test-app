@@ -1,4 +1,4 @@
-<ion-view view-title="Login" name="login-view" class="pane">
+<ion-view view-title="Login" name="login-view" class="pane" ng-controller="LoginCtrl">
     <ion-content class="padding">
 
         <div class="buffer-top">
@@ -7,36 +7,37 @@
         <div class="buffer-top"></div>
         <div>
             <div class="buffer-left"></div>
-            <div><h2 class="title">ePic</h2></div>
+            <div><h2 class="title" style="color: white">ePic</h2></div>
             <div></div>
         </div>
 
 
-        <div class="buffer-top"></div>
 
-        <!--</div>-->
-        <!--<div class="list padding top">-->
-            <!--<label class="item item-input">-->
-                <!--<input class="text-color" type="text" placeholder="Email" ng-model="data.username">-->
-            <!--</label>-->
-            <!--</br>-->
-            <!--<label class="item item-input">-->
-                <!--<input type="text" placeholder="Password" ng-model="data.password">-->
-            <!--</label>-->
-
-        <!--</div>-->
-
-        <!--<button class="button button-block button-energized" ng-click="signIn(user)">-->
-            <!--Signup!-->
-        <!--</button>-->
 
         <div class="row">
 
             <div class= "col">
-                <button  class="button button-assertive button-block" ng-click="signIn(user)">
+                <button  class="button button-assertive button-block" ng-controller="PopupCtrl" ng-click="showPopup()">
                     Local
                 </button>
             </div>
+
+            <!--<div ng-controller="LoginCtrl">-->
+        <!--<modal title="Login form" visible="showModal">-->
+            <!--<div class="list padding top">-->
+                <!--<label class="item item-input">-->
+                    <!--<input class="text-color" type="text" placeholder="Email" ng-model="data.username">-->
+                <!--</label>-->
+                <!--</br>-->
+                <!--<label class="item item-input">-->
+                    <!--<input type="text" placeholder="Password" ng-model="data.password">-->
+                <!--</label>-->
+            <!--</div>-->
+
+            <!--<button type="submit" class="button button-block button-energized" ng-click="signIn(user)">-->
+                <!--Signup!-->
+            <!--</button>-->
+        <!--</modal>-->
 
             <div class= "col">
                 <button class="button button-positive button-block">

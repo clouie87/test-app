@@ -1,5 +1,6 @@
 angular.module('starter.services', [])
     .service('LoginService', function($q) {
+
       return {
         loginUser: function(name, pw) {
           var deferred = $q.defer();

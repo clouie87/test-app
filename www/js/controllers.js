@@ -1,12 +1,7 @@
 
 angular.module('starter.controllers', [])
 
-    .controller('SignInCtrl', function($scope, $state){
-      $scope.signIn = function(user){
-        console.log('SignIn', user);
-        $state.go('tab.dash');
-      };
-    })
+
 
     //.controller('InstagramCtrl', function($scope, $state){
     //  $scope.instaSignIn = function(user){
@@ -23,25 +18,109 @@ angular.module('starter.controllers', [])
     })
 
     .controller('LoginCtrl', function($scope, LoginService, $ionicPopup, $state) {
-      $scope.data = {};
-
-      $scope.login = function() {
-        LoginService.loginUser($scope.data.username, $scope.data.password).success(function(data) {
-          $state.go('tab.dash');
-        }).error(function(data) {
-          var alertPopup = $ionicPopup.alert({
-            title: 'Login failed!',
-            template: 'Please check your credentials!'
-          });
-        });
-      }
+    //
+    //  $scope.data = {};
+    //
+    //  $scope.login = function() {
+    //    LoginService.loginUser($scope.data.username, $scope.data.password).success(function(data) {
+    //      $state.go('tab.dash');
+    //    }).error(function(data) {
+    //      var alertPopup = $ionicPopup.alert({
+    //        title: 'Login failed!',
+    //        template: 'Please check your credentials!'
+    //      });
+    //    });
+    //  }
     })
 
-//.controller ('EditCtrl', function($scope, $ionicSideMenuDelegate) {
-//    $scope.toggleRight = function() {
-//        $ionicSideMenuDelegate.toggleRight();
-//    };
+    .controller('PopupCtrl', function($scope,$ionicPopup, $timeout){
+        $scope.showPopup=function(){
+            $scope.data = {};
+            var myPopup = $ionicPopup.show({
+                template: '<input type="text" placeholder="Email" ng-model="data.username"> <input type="password" placeholder="Password" ng-model="data.password">',
+                title: 'ePic Gallery',
+                subTitle: 'Join',
+                scope: $scope,
+                buttons: [
+                    { text: 'Cancel' },
+                    {
+                        text: '<b>SignUp</b>',
+                        type: 'button-energized',
+                        onTap: function(data) {
+                            var email = $scope.data.username;
+                            var password = $scope.data.password;
+
+                            data= [
+                                email,
+                                password
+                            ];
+
+                            console.log(data);
+                            //return data;
+
+                            return $scope.signIn(data);
+
+
+                            //if (!$scope.data.password) {
+                            //    //don't allow the user to close unless he enters wifi password
+                            //    e.preventDefault();
+                            //} else {
+                            //    return $scope.data.wifi;
+                            //}
+                        }
+
+                    }
+                ]
+            });
+
+    myPopup.then(function(res) {
+        console.log('Tapped!', res);
+
+    });
+    $timeout(function() {
+        myPopup.close(); //close the popup after 3 seconds for some reason
+    }, 10000)
+    }
+})
+
+//.controller('LoginCtrl', function($scope, LoginService, $ionicPopup, $state) {
+//
+//    $scope.data = {};
+//
+//    $scope.login = function() {
+//        LoginService.loginUser($scope.data.username, $scope.data.password).success(function(data) {
+//            $state.go('tab.dash');
+//        }).error(function(data) {
+//            console.log('credentials didnt match');
+//            var alertPopup = $ionicPopup.alert({
+//                title: 'Login failed!',
+//                template: 'Please check your credentials!'
+//            });
+//        });
+//    }
 //})
+
+.controller('SignInCtrl', ['$scope', '$http', function($scope, $http) {
+        $scope.signIn = function (data) {
+            console.log('SignIn', data);
+        };
+
+        $scope.users = [];
+
+        $http.get('http://clouie.ca/users').success(function (data) {
+            console.log('getting shit from api', data);
+            $scope.users = data;
+
+            //
+            //    // render the page and pass in any flash data if it exists
+            //    res.render('signup.ejs', {message: req.flash('signupMessage')});
+
+        });
+        //$state.go('tab.dash');
+
+        //};
+    }])
+
 
 .controller('NewPhotoCtrl', function($scope, $ionicModal) {
 
