@@ -1,12 +1,22 @@
 <ion-view view-title="Add Photos" class="dash-pane">
     <ion-content>
-            <ion-item class="item-light left" style="padding: 3px !important" ng-repeat="photo in photos" type="item-text-wrap" href="#/tab/photo/{{photo.description}}">
+
+
+            <ion-item class="item-light left" style="padding: 3px !important" ng-controller="AddPhotosCtrl" ng-repeat="photo in photos" type="item-text-wrap" href="#/tab/photo/{{photo.description}}">
+
 
                 <div class="item item-thumbnail" style="padding: 0">
                     <img class="thumbnail" ng-src="http://clouie.ca/{{photo.filepath}}"/>
                 </div>
 
             </ion-item>
+
+        <ion-item class="item-light left" style="padding: 4px !important; bottom: 0"  type="item-text-wrap" href="">
+
+            <div class="item item-thumbnail"  ng-controller="NewPhotoCtrl" ng-click="showAddPhoto()" style="padding: 0">
+                <img class="thumbnail" ng-src="./css/styles/amanda2.jpg"/>
+            </div>
+        </ion-item>
 
     </ion-content>
 </ion-view>

@@ -69,56 +69,62 @@ angular.module('starter.controllers', [])
                             //}
                         }
 
+
+
                     }
                 ]
+
             });
+
+
 
     myPopup.then(function(res) {
         console.log('Tapped!', res);
 
     });
+
     $timeout(function() {
         myPopup.close(); //close the popup after 3 seconds for some reason
     }, 10000)
-    }
+};
+
 })
 
-//.controller('LoginCtrl', function($scope, LoginService, $ionicPopup, $state) {
-//
-//    $scope.data = {};
-//
-//    $scope.login = function() {
-//        LoginService.loginUser($scope.data.username, $scope.data.password).success(function(data) {
-//            $state.go('tab.dash');
-//        }).error(function(data) {
-//            console.log('credentials didnt match');
-//            var alertPopup = $ionicPopup.alert({
-//                title: 'Login failed!',
-//                template: 'Please check your credentials!'
-//            });
-//        });
-//    }
-//})
 
-.controller('SignInCtrl', ['$scope', '$http', function($scope, $http) {
+
+.controller('SignInCtrl', ['$scope', '$http', function($scope, $http, LoginService, $state) {
         $scope.signIn = function (data) {
-            console.log('SignIn', data);
-        };
+            console.log('SignIn control is starting for: ', data);
+            //$state.go('tab.dash');
 
-        $scope.users = [];
-
-        $http.get('http://clouie.ca/users').success(function (data) {
-            console.log('getting shit from api', data);
-            $scope.users = data;
-
+            //var email = $scope.data.username;
+            //var password = $scope.data.password;
             //
-            //    // render the page and pass in any flash data if it exists
-            //    res.render('signup.ejs', {message: req.flash('signupMessage')});
+            //data= [
+            //    email,
+            //    password
+            //];
+
+        $http.post('http://clouie.ca/signup', data).success(function (data) {
+            console.log('getting shit from api', data);
+
+
+
+            $scope.signIn = function() {
+                console.log('getting stuff from api');
+                LoginService.loginUser($scope.data.email, $scope.data.password).success(function (data) {
+                    console.log('this will be redirected to dashboard', data);
+                    //$state.go('tab.dash');
+                });
+
+                //    // render the page and pass in any flash data if it exists
+                //    res.render('signup.ejs', {message: req.flash('signupMessage')});
+            }
+
 
         });
-        //$state.go('tab.dash');
 
-        //};
+    };
     }])
 
 
@@ -195,9 +201,37 @@ angular.module('starter.controllers', [])
             $scope.photos = data;
             //console.log(data.field('description', data.validPhotoResource.description))
         });
-        $scope.photo = Photos.get($stateParams.photoDescription);
+        //$scope.photo = Photos.get($stateParams.photoDescription);
 
 }])
+
+.controller('NewPhotoCtrl', function($scope,$ionicPopup) {
+        $scope.showAddPhoto = function () {
+            var myAddPhoto = $ionicPopup.show({
+                template: '<input type="file" placeholder="Photo" ng-model="data.photo"> <input type="text" placeholder="Description" ng-model="data.description">',
+
+                //template: '<form method="POST" action="/photo" enctype="multipart/form-data">',
+                title: 'Upload your own Photo!',
+                scope: $scope,
+                buttons: [
+                    {text: 'Cancel'},
+                    {
+                    text: '<b>Save</b>',
+                    type: 'button-positive'
+                    }
+                ]
+            });
+
+            myAddPhoto.then(function (res) {
+
+                if (res) {
+                    console.log('You are sure');
+                } else {
+                    console.log('You are not sure');
+                }
+            });
+        }
+    })
 
 
 .controller('AccountCtrl', function($scope) {

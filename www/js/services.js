@@ -1,5 +1,8 @@
 angular.module('starter.services', [])
+
     .service('LoginService', function($q) {
+      console.log('doing login stuff');
+
 
       return {
         loginUser: function(name, pw) {
@@ -23,6 +26,8 @@ angular.module('starter.services', [])
         }
       }
     })
+
+    //.service
 
 //.provider('Post', function() {
 //      this.$get = ['$resource', function($resource) {
