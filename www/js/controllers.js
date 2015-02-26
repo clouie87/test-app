@@ -138,7 +138,30 @@ angular.module('starter.controllers', [])
             $scope.modal = modal;
 
         })
+
     })
+
+.controller('CameraCtrl', function($scope, $state){
+        $scope.imageURI = 'http://images.wikia.com/clubpenguin/images/6/6c/Add_image_icon.svg';
+
+        //takePhoto function attached to button
+        $scope.takePhoto=function() {
+            console.log('take photo');
+            var cameraOptions = {
+                targetWidth: 300,
+                targetHeight: 300
+            };
+            //this is where i will do api calls to take the picture
+
+            navigator.camera.getPicture(function (imageURI) {
+                $scope.imageURI = imageURI;
+                $state.go('tab.camera');
+            }, function (err) {
+                alert('sorry cant take photo!');
+            }, cameraOptions);
+        }
+    })
+
 
 
 .controller('DashCtrl', function($scope) {
@@ -207,32 +230,45 @@ angular.module('starter.controllers', [])
 
 .controller('NewPhotoCtrl', function($scope,$ionicPopup) {
         $scope.showAddPhoto = function () {
+            $scope.data={};
             var myAddPhoto = $ionicPopup.show({
                 template: '<input type="file" placeholder="Photo" ng-model="data.photo"> <input type="text" placeholder="Description" ng-model="data.description">',
-
-                //template: '<form method="POST" action="/photo" enctype="multipart/form-data">',
                 title: 'Upload your own Photo!',
                 scope: $scope,
                 buttons: [
                     {text: 'Cancel'},
                     {
-                    text: '<b>Save</b>',
-                    type: 'button-positive'
+                        text: '<b>Save</b>',
+                        type: 'button-positive',
+                        onTap: function(data) {
+                            var photo = $scope.data.photo;
+                            var description = $scope.data.description;
+
+                            data = [
+                                photo,
+                                description
+                            ];
+
+                            console.log(data);
+                            //return data;
+
+                            return $scope.addNewPhoto(data);
+                        }
                     }
                 ]
             });
 
             myAddPhoto.then(function (res) {
-
-                if (res) {
-                    console.log('You are sure');
-                } else {
-                    console.log('You are not sure');
-                }
+                    console.log('Save the photo!', res);
             });
         }
     })
-
+.controller('AddNewPhotoCtrl', ['$scope', '$http', function($scope, $http, LoginService, $state) {
+        console.log('adding photo');
+        $scope.addNewPhoto = function (data) {
+            console.log('Saving the photo: ', data);
+        }
+    }])
 
 .controller('AccountCtrl', function($scope) {
   $scope.settings = {
