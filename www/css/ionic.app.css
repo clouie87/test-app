@@ -28,6 +28,11 @@ body {
 .dash-pane {
   background: black !important; }
 
+.container {
+  width: 600px;
+  height: 600px;
+  color: white; }
+
 .right {
   float: right;
   margin-top: 10%; }

@@ -1,4 +1,9 @@
 angular.module('starter.services', [])
+    //
+    //.factory('Post', function($resource) {
+    //  return $resource('/api/post/:id');
+    //})
+
 
     .service('LoginService', function($q) {
       console.log('doing login stuff');
@@ -147,41 +152,19 @@ angular.module('starter.services', [])
   }
 })
 
-.factory('Photos', function() {
-        var photos = [];
+.factory('Photos', ['$http', function PhotoFactory($http) {
 
         return {
             all: function() {
-                return photos;
+                return $http({
+                  method:'GET',
+                  url:'http://clouie.ca/photo/'
+                });
             },
             get: function(photoDescription) {
                 // Simple index lookup
                 return photos[photoDescription];
             }
         };
-    //})
-      //var photos = [];
-      //var photos = [{
-      //  //this would be the array that we get from our api with the filepath, description and album
-      //  //this is dummy text for right now but what our database would return
-      //  id: 1,
-      //  album_id: 'Darian McDonald',
-      //  description: 'Enjoys drawing things',
-      //  filepath: 'http://clouie.ca/uploads/dsc_0682-copy_1424265305474.jpg'
-      //}, {
-      //  id: 1,
-      //  album_id: 'Darian McDonald',
-      //  description: 'Enjoys drawing things',
-      //  filepath: 'http://clouie.ca/uploads/dsc_0682-copy_1424265305474.jpg'
-      //}];
-      //
-      //return {
-      //  all: function() {
-      //    return photos;
-      //  },
-      //  get: function(photoId) {
-      //    // Simple index lookup
-      //    return photos[photoId];
-      //  }
-      //}
-    });
+
+    }]);

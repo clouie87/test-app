@@ -48,7 +48,8 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     views: {
       'tab-dash': {
         templateUrl: 'templates/tab-dash.html',
-        controller: 'DashCtrl'
+        controller: 'DashCtrl',
+        controllerAs: 'DashCtrl'
       }
     }
   })
@@ -84,24 +85,34 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
         }
       })
 
-  //.state('tab.friends', {
-  //    url: '/friends',
-  //    views: {
-  //      'tab-friends': {
-  //        templateUrl: 'templates/tab-friends.html',
-  //        controller: 'FriendsCtrl'
-  //      }
-  //    }
-  //  })
-  //  .state('tab.friend-detail', {
-  //    url: '/friend/:friendId',
-  //    views: {
-  //      'tab-friends': {
-  //        templateUrl: 'templates/friend-detail.html',
-  //        controller: 'FriendDetailCtrl'
-  //      }
-  //    }
-  //  })
+  .state('tab.friends', {
+      url: '/friends',
+      views: {
+        'tab-friends': {
+          templateUrl: 'templates/tab-friends.html',
+          controller: 'FriendsCtrl'
+        }
+      }
+    })
+    .state('tab.friend-detail', {
+      url: '/friend/:friendId',
+      views: {
+        'tab-friends': {
+          templateUrl: 'templates/friend-detail.html',
+          controller: 'FriendDetailCtrl'
+        }
+      }
+    })
+
+      .state('tab.friend-new', {
+        url: '/friend/new',
+        views: {
+          'tab-friends': {
+            templateUrl: 'templates/friend-new.html',
+            controller: 'NewFriendCtrl'
+          }
+        }
+      })
 
     .state('tab.photos', {
       url: '/photos',

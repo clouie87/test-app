@@ -145,20 +145,29 @@ angular.module('starter.controllers', [])
         $scope.imageURI = 'http://images.wikia.com/clubpenguin/images/6/6c/Add_image_icon.svg';
 
         //takePhoto function attached to button
-        $scope.takePhoto=function() {
+        $scope.takePhoto= function() {
             console.log('take photo');
             var cameraOptions = {
+                //destinationType: Camera.DestinationType.FILE_URI,
+                //sourceType: Camera.PictureSourceType.CAMERA, // Camera.PictureSourceType.PHOTOLIBRARY
+                //allowEdit: false,
+                //encodingType: Camera.EncodingType.JPEG,
+                //popoverOptions: CameraPopoverOptions,
                 targetWidth: 300,
                 targetHeight: 300
             };
-            //this is where i will do api calls to take the picture
+            $http.post('http://clouie.ca/photo', $scope.imageURI).success(function (data) {
+                console.log('posting shit to api', data);
+                //this is where i will do api calls to take the picture
 
-            navigator.camera.getPicture(function (imageURI) {
-                $scope.imageURI = imageURI;
-                $state.go('tab.camera');
-            }, function (err) {
-                alert('sorry cant take photo!');
-            }, cameraOptions);
+                navigator.camera.getPicture(function (imageURI) {
+                    $scope.imageURI = imageURI;
+                    $state.go('tab.camera');
+                }, function (err) {
+                    alert('sorry cant take photo!');
+                }, cameraOptions);
+
+            })
         }
     })
 
@@ -185,52 +194,74 @@ angular.module('starter.controllers', [])
 
 
 
-.controller('FriendDetailCtrl', function($scope, $stateParams, Friends) {
+.controller('FriendDetailCtrl', function($scope, $state, $stateParams, Friends) {
   $scope.friend = Friends.get($stateParams.friendId);
+        $scope.saveFriend= function(){
+            console.log('going to save friend');
+            $state.go('/friend/new');
+        }
 })
 
-.controller('PhotosCtrl', ['$scope', '$http', function($scope, $http, Photos){
+    .controller('NewFriendCtrl', function($scope, $state){
 
-      $scope.photos= [];
-      $http.get('http://clouie.ca/photo/').success(function(data){
-        //$window.photos = data;
-        $scope.photos = data;
+})
+.controller('AddNewFriendCtrl', function($http){
+        var controller= this;
+        this.saveFriend = function(friend){
+            console.log('trying to save new friend');
+            controller.errors=null;
+            $http({method:'POST', url:'/friends', data: friend})
+                .catch(function(friend){
+                    controller.errors=friend.data.error;
+                })
+        };
+    })
 
-        //console.log(data.field('description', data.validPhotoResource.description))
-      });
+.controller('PhotosCtrl', ['$scope', 'Photos', function($scope, Photos){
+        Photos.all().success(function(data){
+            $scope.photos = data;
+        });
   }])
 
-.controller('AddPhotosCtrl', ['$scope', '$http', function($scope, $http){
-    $scope.photos= [];
-    $http.get('http://clouie.ca/photo/').success(function(data){
-        //$window.photos = data;
-        $scope.photos = data;
-        //console.log(data.field('description', data.validPhotoResource.description))
+.controller('AddPhotosCtrl', ['$scope', 'Photos', function($scope, Photos){
+        Photos.all().success(function(data){
+            $scope.photos = data;
+            console.log(data[0].description);
+
     });
 
 
 }])
 
 
-.controller('PhotoCreateCtrl', function($scope, $stateParams, Photos) {
-    $scope.photo = Photos.get($stateParams.photoId);
-})
+.controller('PhotoCreateCtrl', ['$scope', '$stateParams', 'Photos', function($scope, $stateParams, Photos) {
+        Photos.all().success(function(data) {
+            $scope.photo = data.get($stateParams.photoId);
+            console.log('going to ', $stateParams.photoId);
+        });
+
+}])
 
 
 .controller('PhotoDetailCtrl', ['$scope', '$http', 'Photos', function($scope, $http, $stateParams, Photos){
-        $scope.photos= [];
-        $http.get('http://clouie.ca/photo/').success(function(data){
+        console.log('getting details of specific photo');
+        $scope.photo= [];
+        $http.get('http://clouie.ca/photo/'+$stateParams.photoId).success(function(data){
+            //console.log(photoId);
             //$window.photos = data;
-            $scope.photos = data;
+            $scope.photo = data;
             //console.log(data.field('description', data.validPhotoResource.description))
         });
         //$scope.photo = Photos.get($stateParams.photoDescription);
 
 }])
 
-.controller('NewPhotoCtrl', function($scope,$ionicPopup) {
+.controller('NewPhotoCtrl', function($scope,$ionicPopup, $http) {
+
+
         $scope.showAddPhoto = function () {
             $scope.data={};
+
             var myAddPhoto = $ionicPopup.show({
                 template: '<input type="file" placeholder="Photo" ng-model="data.photo"> <input type="text" placeholder="Description" ng-model="data.description">',
                 title: 'Upload your own Photo!',
@@ -250,16 +281,24 @@ angular.module('starter.controllers', [])
                             ];
 
                             console.log(data);
-                            //return data;
-
-                            return $scope.addNewPhoto(data);
+                            var controller = this;
+                            this.savePhoto = function(data) {
+                                $http({method: 'POST', url: 'http://clouie.ca/photo', data: data});
+                                console.log('posting the photo data');
+                            };
+                            //return $scope.addNewPhoto(data);
                         }
                     }
                 ]
+
             });
 
-            myAddPhoto.then(function (res) {
-                    console.log('Save the photo!', res);
+
+            myAddPhoto.then(function (data) {
+                $http({method: 'POST', url: 'http://clouie.ca/photo', data: data});
+                console.log('posting the photo data');
+
+                    console.log('Save the photo!', data);
             });
         }
     })
