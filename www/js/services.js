@@ -160,11 +160,11 @@ angular.module('starter.services', [])
                   method:'GET',
                   url:'http://clouie.ca/photo/'
                 });
-            },
-            get: function(photoDescription) {
-                // Simple index lookup
-                return photos[photoDescription];
             }
+            //get: function(photoDescription) {
+            //    // Simple index lookup
+            //    return photos[photoDescription];
+            //}
         };
 
     }]);

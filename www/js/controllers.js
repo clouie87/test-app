@@ -226,7 +226,7 @@ angular.module('starter.controllers', [])
 .controller('AddPhotosCtrl', ['$scope', 'Photos', function($scope, Photos){
         Photos.all().success(function(data){
             $scope.photos = data;
-            console.log(data[0].description);
+            console.log('going to my photo gallary, ', data[0].description);
 
     });
 
@@ -234,22 +234,21 @@ angular.module('starter.controllers', [])
 }])
 
 
-.controller('PhotoCreateCtrl', ['$scope', '$stateParams', 'Photos', function($scope, $stateParams, Photos) {
+.controller('PhotoCreateCtrl', ['$scope', 'Photos', function($scope, Photos) {
         Photos.all().success(function(data) {
-            $scope.photo = data.get($stateParams.photoId);
-            console.log('going to ', $stateParams.photoId);
+            $scope.photo = data;
+            console.log('going to create photo');
         });
 
 }])
 
 
-.controller('PhotoDetailCtrl', ['$scope', '$http', 'Photos', function($scope, $http, $stateParams, Photos){
+.controller('PhotoDetailCtrl', ['$scope', '$stateParams', 'Photos', function($scope, $stateParams, Photos){
         console.log('getting details of specific photo');
-        $scope.photo= [];
-        $http.get('http://clouie.ca/photo/'+$stateParams.photoId).success(function(data){
-            //console.log(photoId);
-            //$window.photos = data;
-            $scope.photo = data;
+        var num = 1;
+        Photos.all().success(function(data) {
+            $scope.photo = data + num++;
+            console.log(data[0].description + num++);
             //console.log(data.field('description', data.validPhotoResource.description))
         });
         //$scope.photo = Photos.get($stateParams.photoDescription);
@@ -263,33 +262,34 @@ angular.module('starter.controllers', [])
             $scope.data={};
 
             var myAddPhoto = $ionicPopup.show({
-                template: '<input type="file" placeholder="Photo" ng-model="data.photo"> <input type="text" placeholder="Description" ng-model="data.description">',
-                title: 'Upload your own Photo!',
-                scope: $scope,
-                buttons: [
-                    {text: 'Cancel'},
-                    {
-                        text: '<b>Save</b>',
-                        type: 'button-positive',
-                        onTap: function(data) {
-                            var photo = $scope.data.photo;
-                            var description = $scope.data.description;
-
-                            data = [
-                                photo,
-                                description
-                            ];
-
-                            console.log(data);
-                            var controller = this;
-                            this.savePhoto = function(data) {
-                                $http({method: 'POST', url: 'http://clouie.ca/photo', data: data});
-                                console.log('posting the photo data');
-                            };
-                            //return $scope.addNewPhoto(data);
-                        }
-                    }
-                ]
+                templateUrl: 'templates/photo-new.html',
+                //template: '<input type="file" placeholder="Photo" ng-model="data.photo"> <input type="text" placeholder="Description" ng-model="data.description">',
+                //title: 'Upload your own Photo!',
+                //scope: $scope,
+                //buttons: [
+                //    {text: 'Cancel'},
+                //    {
+                //        text: '<b>Save</b>',
+                //        type: 'button-positive',
+                //        onTap: function(data) {
+                //            var photo = $scope.data.photo;
+                //            var description = $scope.data.description;
+                //
+                //            data = [
+                //                photo,
+                //                description
+                //            ];
+                //
+                //            console.log(data);
+                //            var controller = this;
+                //            this.savePhoto = function(data) {
+                //                $http({method: 'POST', url: 'http://clouie.ca/photo', data: data});
+                //                console.log('posting the photo data');
+                //            };
+                //            //return $scope.addNewPhoto(data);
+                //        }
+                //    }
+                //]
 
             });
 
